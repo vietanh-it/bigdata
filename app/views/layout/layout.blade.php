@@ -44,6 +44,56 @@
                         <li>
                             <a href="#">Home</a>
                         </li>
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown">Information <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">About BDHI</a>
+                                </li>
+                                <li>
+                                    <a href="#">Why BDHI</a>
+                                </li>
+                                <li>
+                                    <a href="#">Big Data?</a>
+                                </li>
+                                <li>
+                                    <a href="#">Healthcare?</a>
+                                </li>
+                                <li>
+                                    <a href="#">Challenges?</a>
+                                </li>
+                                <li>
+                                    <a href="#">Opportunities</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown">Account <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Sign up</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sign in</a>
+                                </li>
+                                <li>
+                                    <a href="#">My Account</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Donate</a>
+                        </li>
+                        <li>
+                            <a href="#">Post Comments</a>
+                        </li>
+                        <li>
+                            <a href="#">Research</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact us</a>
+                        </li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -56,105 +106,8 @@
             <div class="b-team-photo">
             </div>
 
-            <!-- About Us -->
-            <div class="b-about-block">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-8 col-md-offset-2">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit congue porta. Pellentesque ac elit a metus condimentum lobortis a eu odio.
-                        </div>
-                    </div> <!-- / .row -->
-                </div> <!-- / .container -->
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h2 class="headline-lg">
-                            About Us
-                        </h2>
-                    </div>
-                    <div class="col-sm-6">
-                        <h3 class="headline">
-                            <span>Welcome to Paperclip</span>
-                        </h3>
-                        <p>
-                            Morbi rhoncus eu tellus sit amet porta. Suspendisse augue nunc, pharetra auctor pretium quis, semper id justo. Praesent egestas blandit vehicula. Phasellus eget purus mi.
-                        </p>
-                        <ul class="ft-list">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Donec vel nisi sit amet mauris dapibus aliquam quis vel magna.</li>
-                            <li>Donec vulputate tellus quis volutpat congue.</li>
-                            <li>Sed ultrices eros eu euismod semper.</li>
-                            <li>Donec vulputate tellus quis volutpat congue.</li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6">
-                        <h3 class="headline">
-                            <span>Our Skills</span>
-                        </h3>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-theme-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;">
-                                HTML/CSS
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-theme-primary" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
-                                JavaScript
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-theme-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                PHP
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-theme-primary" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-                                Photoshop
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- / .row -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h2 class="headline-lg">
-                            Our Team
-                        </h2>
-                        <h4>Meet our team members</h4>
-                    </div>
-                </div> <!-- / .row -->
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="user-avatar shadow-effect text-center">
-                            <img class="img-responsive center-block" src="img/photo-4.jpg" alt="...">
-                            John Doe
-                            <p class="text-muted">Founder</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="user-avatar shadow-effect text-center">
-                            <img class="img-responsive center-block" src="img/photo-5.jpg" alt="...">
-                            Jane Doe
-                            <p class="text-muted">Engineer</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="user-avatar shadow-effect text-center">
-                            <img class="img-responsive center-block" src="img/photo-6.jpg" alt="...">
-                            John Doe
-                            <p class="text-muted">Sales</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="user-avatar shadow-effect text-center">
-                            <img class="img-responsive center-block" src="img/photo-4.jpg" alt="...">
-                            John Doe
-                            <p class="text-muted">Admin Team</p>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- / .container -->
-
+            @yield('content')
+            
         </div> <!-- / .wrapper -->
 
         <!-- Footer -->

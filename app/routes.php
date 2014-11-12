@@ -13,5 +13,8 @@
 
 Route::get('/', function()
 {
-	return View::make('layout/layout');
+	return View::make('index');
 });
+
+Route::controller('information', 'InformationController');
+Route::controller('account', 'AccountController');
