@@ -8591,3 +8591,24 @@ footer .tweet > p > a {
   cursor: pointer;
   color: rgba(0,0,0,.5);
 }
+
+.btn-primary, .modal-header {
+    background-color: #ED3E49;
+    border-color: #D11717;
+    color: #FFFFFF;
+}
+
+.modal-header {
+    border-radius: 5px 5px 0 0;
+}
+
+.close {
+    color: #FFFFFF;
+    text-shadow: none;
+    opacity: 1;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+    background-color: #D11717;
+    border-color: #D11717;
+}

@@ -16,5 +16,5 @@ Route::get('/', function()
 	return View::make('index');
 });
 
-Route::controller('information', 'InformationController');
-Route::controller('account', 'AccountController');
+Route::controller('home', 'HomeController');
+//Route::controller('account', 'AccountController');

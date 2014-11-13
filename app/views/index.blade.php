@@ -64,3 +64,7 @@
 </div> <!-- / .container -->
 
 @stop
+
+@section('modal')
+
+@stop

@@ -72,10 +72,10 @@
                             <a href="#" data-toggle="dropdown">Account <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#">Sign up</a>
+                                    <a href="#" data-toggle='modal' data-target='#signupModal'>Sign up</a>
                                 </li>
                                 <li>
-                                    <a href="#">Sign in</a>
+                                    <a href="#" data-toggle='modal' data-target='#loginModal'>Sign in</a>
                                 </li>
                                 <li>
                                     <a href="#">My Account</a>
@@ -107,7 +107,7 @@
             </div>
 
             @yield('content')
-            
+
         </div> <!-- / .wrapper -->
 
         <!-- Footer -->
@@ -159,6 +159,72 @@
                 </div>
             </div>  <!-- / .row -->
         </div> <!-- / .container -->
+
+        <!-- Modal Login -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="loginLabel">Sign in</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" name='formLogin' method="POST">
+                            <div class="form-group">
+                                <label for="emailLogin">Email address</label>
+                                <input name='emailLogin' type="email" class="form-control" id="emailLogin" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordLogin">Password</label>
+                                <input name="passwordLogin" type="password" class="form-control" id="passwordLogin" placeholder="Password">
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="rememberLogin"> Remember me
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Sign in</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Login -->
+        <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="signupLabel">Sign up</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" name='formSignup' method="POST">
+                            <div class="form-group">
+                                <label for="emailSignup">Email address</label>
+                                <input name='emailSignup' type="email" class="form-control" id="emailSignup" placeholder="Enter email" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordSignup">Password</label>
+                                <input name="passwordSignup" type="password" class="form-control" id="passwordSignup" placeholder="Password" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="rePasswordSignup">Retype Password</label>
+                                <input name="rePasswordSignup" type="password" class="form-control" id="rePasswordSignup" placeholder="Password" value="">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Sign up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @yield('modal')
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
