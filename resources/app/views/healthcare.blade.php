@@ -14,16 +14,6 @@
 @stop
 
 @section('content')
-<!-- About Us -->
-<div id="content" class="b-about-block">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-8 col-md-offset-2">
-                The purpose of this website is to show information about Big Data.
-            </div>
-        </div> <!-- / .row -->
-    </div> <!-- / .container -->
-</div>
 
 <div class="container">
     <div class="row">

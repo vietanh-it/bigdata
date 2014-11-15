@@ -9,7 +9,7 @@
         <link rel="shortcut icon" href="{{ asset('assets/ico/favicon.png') }}">
 
         @yield('title')
-        
+
         <!-- Custom styles for this template -->
         {{ HTML::style('assets/css/style.css') }}
 
@@ -67,21 +67,6 @@
                                 </li>
                             </ul>
                         </li>
-
-                        <li data-menu='account' class="dropdown">
-                            <a href="#" data-toggle="dropdown">Account <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#" data-toggle='modal' data-target='#signupModal'>Sign up</a>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle='modal' data-target='#loginModal'>Sign in</a>
-                                </li>
-                                <li>
-                                    <a href="#">My Account</a>
-                                </li>
-                            </ul>
-                        </li>
                         <li data-menu='donate'>
                             <a href="{{ URL::action('HomeController@getDonate') }}#content">Donate</a>
                         </li>
@@ -93,6 +78,28 @@
                         </li>
                         <li data-menu='contact'>
                             <a href="{{ URL::action('HomeController@getContactUs') }}#content">Contact us</a>
+                        </li>
+                        
+                        <li data-menu='account' class="dropdown">
+                            @if(!Auth::check())
+                            <a href="#" data-toggle="dropdown">Account <b class="caret"></b></a>
+                            @else
+                            <a href="#" data-toggle="dropdown">{{ Auth::user()->email }} <b class="caret"></b></a>
+                            @endif
+                            <ul class="dropdown-menu">
+                                @if(!Auth::check())
+                                <li>
+                                    <a href="#" data-toggle='modal' data-target='#signupModal'>Sign up</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle='modal' data-target='#loginModal'>Sign in</a>
+                                </li>
+                                @else
+                                <li>
+                                    <a href="{{ action('HomeController@getSignOut') }}">Sign out</a>
+                                </li>
+                                @endif
+                            </ul>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -106,6 +113,20 @@
             <div class="b-team-photo">
             </div>
 
+            <!-- About Us -->
+            <div id="content" class="b-about-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-8 col-md-offset-2">
+                            The purpose of this website is to show information about Big Data.
+                        </div>
+                    </div> <!-- / .row -->
+                </div> <!-- / .container -->
+            </div>
+
+            <div class="error-message">
+                {{ HTML::ul($errors->all()) }}
+            </div>
             @yield('content')
 
         </div> <!-- / .wrapper -->
@@ -164,69 +185,83 @@
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
+                    {{ Form::open(array('url' => 'home/sign-in')) }}
+                    {{ Form::hidden('currentUrl', Route::currentRouteAction()) }}
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h4 class="modal-title" id="loginLabel">Sign in</h4>
                     </div>
                     <div class="modal-body">
-                        <form role="form" name='formLogin' method="POST">
-                            <div class="form-group">
-                                <label for="emailLogin">Email address</label>
-                                <input name='emailLogin' type="email" class="form-control" id="emailLogin" placeholder="Enter email">
-                            </div>
-                            <div class="form-group">
-                                <label for="passwordLogin">Password</label>
-                                <input name="passwordLogin" type="password" class="form-control" id="passwordLogin" placeholder="Password">
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="rememberLogin"> Remember me
-                                </label>
-                            </div>
-                        </form>
+                        <div class="form-group">
+                            <label>Email address</label>
+                            {{ Form::email('emailSignin', Input::old('emailSignin'), array('class' => 'form-control', 'placeholder' => 'Enter your email')) }}
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            {{ Form::password('passwordSignin', array('class' => 'form-control', 'placeholder' => 'Enter your password')) }}
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Sign in</button>
+                        {{ Form::submit('Sign in', array('class' => 'btn btn-primary')) }}
                     </div>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
-        
+
         <!-- Modal Login -->
         <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
+                    {{ Form::open(array('url' => 'home/sign-up')) }}
+                    {{ Form::hidden('currentUrl', Route::currentRouteAction()) }}
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h4 class="modal-title" id="signupLabel">Sign up</h4>
                     </div>
                     <div class="modal-body">
-                        <form role="form" name='formSignup' method="POST">
-                            <div class="form-group">
-                                <label for="emailSignup">Username (Email)</label>
-                                <input name='emailSignup' type="email" class="form-control" id="emailSignup" placeholder="Enter email" value="">
-                            </div>
-                            <div class="form-group">
-                                <label for="passwordSignup">Password</label>
-                                <input name="passwordSignup" type="password" class="form-control" id="passwordSignup" placeholder="Password" value="">
-                            </div>
-                            <div class="form-group">
-                                <label for="rePasswordSignup">Retype Password</label>
-                                <input name="rePasswordSignup" type="password" class="form-control" id="rePasswordSignup" placeholder="Password" value="">
-                            </div>
-                            <div class="form-group">
-                                <label>Password Recovery Hint</label>
-                                <select class="form-control">
-                                    <option value="">Your Childhood </option>
-                                </select>
-                            </div>
-                        </form>
+                        <div class="form-group">
+                            <label>Username (Email)</label>
+                            {{ Form::email('emailSignup', Input::old('emailSignup'), array('class' => 'form-control', 'placeholder' => 'Enter your email')) }}
+                        </div>
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            {{ Form::text('nameSignup', Input::old('nameSignup'), array('class' => 'form-control', 'placeholder' => 'Enter your name')) }}
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            {{ Form::password('passwordSignup', array('class' => 'form-control', 'placeholder' => 'Enter your password')) }}
+                        </div>
+                        <div class="form-group">
+                            <label>Retype Password</label>
+                            {{ Form::password('rePasswordSignup', array('class' => 'form-control', 'placeholder' => 'Retype your password')) }}
+                        </div>
+                        <div class="form-group">
+                            <label>Password Recovery Hint</label>
+                            {{ Form::select('recoverQuestion', array(
+                                        '0' => 'Your Childhood best friend?',
+                                        '1' => 'Your father middle name?',
+                                        '2' => 'Your favorite singer name?',
+                                        '3' => 'Your favorite high school teacher name?',
+                                        '4' => 'Your favorite game?',
+                                        '5' => 'Your first car model?'), null,
+                                array('class' => 'form-control')) }}
+                        </div>
+                        <div class="form-group">
+                            <label>Answer</label>
+                            {{ Form::text('answerSignup', Input::old('answerSignup'), array('class' => 'form-control', 'placeholder' => 'Enter your answer')) }}
+                        </div>
+                        <div class="form-group">
+                            <label>How did you hear about BDHI?</label>
+                            {{ Form::text('referenceSignup', Input::old('referenceSignup'), array('class' => 'form-control', 'placeholder' => 'Enter your answer')) }}
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Sign up</button>
+                        {{ Form::submit('Sign up', array('class' => 'btn btn-primary')) }}
                     </div>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
@@ -239,6 +274,14 @@
         {{ HTML::script('assets/js/bootstrap.min.js') }}
         {{ HTML::script('assets/js/scrolltopcontrol.js') }}
         {{ HTML::script('assets/js/custom.js') }}
+        <script type="text/javascript">
+        $(document).ready(function () {
+@if (Session::has('flashMessage'))
+        alert("{{ Session::get('flashMessage') }}");
+        window.location.hash = "#content";
+        @endif
+});
+        </script>
         @yield('custom-script')
     </body>
 </html>

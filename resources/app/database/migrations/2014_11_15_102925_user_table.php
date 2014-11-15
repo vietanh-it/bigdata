@@ -19,7 +19,9 @@ class UserTable extends Migration {
             $table->text('password');
             $table->integer('question_id');
             $table->text('question_answer');
+            $table->text('reference');
             
+            $table->rememberToken();
             $table->timestamps();
         });
     }

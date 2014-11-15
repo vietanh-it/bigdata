@@ -11,9 +11,9 @@
 |
 */
 
+Route::controller('home', 'HomeController');
+
 Route::get('/', function()
 {
 	return View::make('index');
 });
-
-Route::controller('home', 'HomeController');

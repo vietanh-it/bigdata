@@ -8621,3 +8621,8 @@ footer .tweet > p > a {
 .paragraph {
     font-size: 18px;
 }
+
+.error-message {
+    text-align: center;
+    color: #ED3E49;
+}
