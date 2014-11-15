@@ -8,8 +8,8 @@
         <meta name="author" content="">
         <link rel="shortcut icon" href="{{ asset('assets/ico/favicon.png') }}">
 
-        <title>Big Data - Home</title>
-
+        @yield('title')
+        
         <!-- Custom styles for this template -->
         {{ HTML::style('assets/css/style.css') }}
 
@@ -41,34 +41,34 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#">Home</a>
+                        <li data-menu='home'>
+                            <a href="{{ URL::action('HomeController@getIndex') }}#content">Home</a>
                         </li>
-                        <li class="dropdown">
+                        <li data-menu='information' class="dropdown">
                             <a href="#" data-toggle="dropdown">Information <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#">About BDHI</a>
+                                    <a href="{{ URL::action('HomeController@getAboutBhdi') }}#content">About BDHI</a>
                                 </li>
                                 <li>
-                                    <a href="#">Why BDHI</a>
+                                    <a href="{{ URL::action('HomeController@getWhyBhdi') }}#content">Why BDHI</a>
                                 </li>
                                 <li>
-                                    <a href="#">Big Data?</a>
+                                    <a href="{{ URL::action('HomeController@getBigData') }}#content">Big Data?</a>
                                 </li>
                                 <li>
-                                    <a href="#">Healthcare?</a>
+                                    <a href="{{ URL::action('HomeController@getHealthCare') }}#content">Healthcare?</a>
                                 </li>
                                 <li>
-                                    <a href="#">Challenges?</a>
+                                    <a href="{{ URL::action('HomeController@getChallenges') }}#content">Challenges?</a>
                                 </li>
                                 <li>
-                                    <a href="#">Opportunities</a>
+                                    <a href="{{ URL::action('HomeController@getOpporunities') }}#content">Opportunities</a>
                                 </li>
                             </ul>
                         </li>
 
-                        <li class="dropdown">
+                        <li data-menu='account' class="dropdown">
                             <a href="#" data-toggle="dropdown">Account <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -82,17 +82,17 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#">Donate</a>
+                        <li data-menu='donate'>
+                            <a href="{{ URL::action('HomeController@getDonate') }}#content">Donate</a>
                         </li>
-                        <li>
+                        <li data-menu='comment'>
                             <a href="#">Post Comments</a>
                         </li>
-                        <li>
-                            <a href="#">Research</a>
+                        <li data-menu='research'>
+                            <a href="{{ URL::action('HomeController@getResearch') }}#content">Research</a>
                         </li>
-                        <li>
-                            <a href="#">Contact us</a>
+                        <li data-menu='contact'>
+                            <a href="{{ URL::action('HomeController@getContactUs') }}#content">Contact us</a>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -239,5 +239,6 @@
         {{ HTML::script('assets/js/bootstrap.min.js') }}
         {{ HTML::script('assets/js/scrolltopcontrol.js') }}
         {{ HTML::script('assets/js/custom.js') }}
+        @yield('custom-script')
     </body>
 </html>

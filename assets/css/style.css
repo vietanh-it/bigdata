@@ -1072,27 +1072,27 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 36px;
+  font-size: 42px;
 }
 h2,
 .h2 {
-  font-size: 30px;
+  font-size: 36px;
 }
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 30px;
 }
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 24px;
 }
 h5,
 .h5 {
-  font-size: 14px;
+  font-size: 20px;
 }
 h6,
 .h6 {
-  font-size: 12px;
+  font-size: 18px;
 }
 p {
   margin: 0 0 10px;
@@ -8611,4 +8611,13 @@ footer .tweet > p > a {
 .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
     background-color: #D11717;
     border-color: #D11717;
+}
+
+.drop-cap {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.paragraph {
+    font-size: 18px;
 }

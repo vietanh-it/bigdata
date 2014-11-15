@@ -18,4 +18,39 @@ class HomeController extends BaseController {
         return View::make('index');
     }
 
+    public function getAboutBhdi() {
+        return View::make('about_bhdi');
+    }
+    
+    public function getWhyBhdi() {
+        return View::make('why_bhdi');
+    }
+    
+    public function getBigData() {
+        return View::make('bigdata');
+    }
+    
+    public function getHealthCare() {
+        return View::make('healthcare');
+    }
+    
+    public function getChallenges() {
+        return View::make('challenges');
+    }
+    
+    public function getOpporunities() {
+        return View::make('opportunities');
+    }
+    
+    public function getDonate() {
+        return View::make('donate');
+    }
+    
+    public function getResearch() {
+        return View::make('research');
+    }
+    
+    public function getContactUs() {
+        return View::make('contact');
+    }
 }

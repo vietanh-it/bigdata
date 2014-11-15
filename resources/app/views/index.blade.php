@@ -1,8 +1,21 @@
 @extends('layout.layout')
 
+@section('title')
+<title>Home</title>
+@stop
+
+@section('custom-script')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("[data-menu]").removeClass('active');
+        $("[data-menu='home']").addClass('active');
+    });
+</script>
+@stop
+
 @section('content')
 <!-- About Us -->
-<div class="b-about-block">
+<div id="content" class="b-about-block">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-8 col-md-offset-2">
@@ -62,9 +75,5 @@
     </div> <!-- / .row -->
 
 </div> <!-- / .container -->
-
-@stop
-
-@section('modal')
 
 @stop
