@@ -42,23 +42,23 @@
             <div class="form-group">
                 <label class="col-sm-2">Name:</label>
                 <div class="col-sm-10">
-                    <input name="name" type="text" class="form-control" placeholder="Enter your name" />
+                    {{ Form::text('name', Input::old('name'), array('class' => 'form-control', 'placeholder' => 'Enter your name')) }}
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2">Email:</label>
                 <div class="col-sm-10">
-                    <input name="email" type="email" class="form-control" placeholder="Enter your email" />
+                    {{ Form::email('email', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Enter your email')) }}
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2">Question:</label>
                 <div class="col-sm-10">
-                    <textarea name="question" class="form-control" row="5" placeholder="Enter your question"></textarea>
+                    {{ Form::textarea('question', Input::old('question'), array('class' => 'form-control', 'placeholder' => 'Enter your question', 'row' => '5')) }}
                 </div>
             </div>
             <div class="col-sm-offset-2">
-                <button type="submit" class="btn btn-lg btn-primary">Send</button>
+                {{ Form::submit('Send', array('class' => 'btn btn-lg btn-primary')) }}
             </div>
             
             {{ Form::close() }}

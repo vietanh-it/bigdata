@@ -11,7 +11,7 @@ class ContentTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::table('contents', function(Blueprint $table) {
+        Schema::create('contents', function(Blueprint $table) {
             $table->increments('id');
             
             $table->text('title');
