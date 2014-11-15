@@ -17,4 +17,3 @@ Route::get('/', function()
 });
 
 Route::controller('home', 'HomeController');
-//Route::controller('account', 'AccountController');

@@ -204,7 +204,7 @@
                     <div class="modal-body">
                         <form role="form" name='formSignup' method="POST">
                             <div class="form-group">
-                                <label for="emailSignup">Email address</label>
+                                <label for="emailSignup">Username (Email)</label>
                                 <input name='emailSignup' type="email" class="form-control" id="emailSignup" placeholder="Enter email" value="">
                             </div>
                             <div class="form-group">
@@ -214,6 +214,12 @@
                             <div class="form-group">
                                 <label for="rePasswordSignup">Retype Password</label>
                                 <input name="rePasswordSignup" type="password" class="form-control" id="rePasswordSignup" placeholder="Password" value="">
+                            </div>
+                            <div class="form-group">
+                                <label>Password Recovery Hint</label>
+                                <select class="form-control">
+                                    <option value="">Your Childhood </option>
+                                </select>
                             </div>
                         </form>
                     </div>
