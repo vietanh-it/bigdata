@@ -53,4 +53,10 @@ class HomeController extends BaseController {
     public function getContactUs() {
         return View::make('contact');
     }
+    
+    public function postContactUs () {
+        $name = Input::get('name');
+        
+        return View::make('contact', [$name]);
+    }
 }

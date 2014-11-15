@@ -38,6 +38,7 @@
             </h3>
             {{ Form::open(array('url' => 'home/contact-us', 'class' => 'form-horizontal col-sm-offset-2 col-sm-8')) }}
 
+            {{ $name or '' }}
             <div class="form-group">
                 <label class="col-sm-2">Name:</label>
                 <div class="col-sm-10">
