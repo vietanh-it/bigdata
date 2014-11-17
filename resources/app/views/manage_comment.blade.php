@@ -54,6 +54,10 @@
         }
         ;
     }
+    
+    function editHandler(id) {
+        window.location.href = '{{ URL::to("home/update-comment/' + id + '") }}';
+    }
 </script>
 @stop
 
@@ -78,9 +82,10 @@
                     <tr>
                         <td>{{ $comment->content_title }}</td>
                         <td>{{ $comment->comment }}</td>
-                        <td>{{ $comment->created_at }}</td>
+                        <td>{{ $comment->updated_at }}</td>
                         <td class="text-center">
-                            <button class="btn btn-primary">Update</button>
+                            <a href="{{ URL::to('home/update-comment') }}/{{ $comment->id }}" class="btn btn-primary">Edit</a>
+                            <!--<button name="updateId" onlick="editHandler({{ $comment->id }})" class="btn btn-primary">Update</button>-->
                         </td>
                         <td class="text-center">
                             {{ Form::open() }}

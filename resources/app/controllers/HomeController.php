@@ -157,7 +157,7 @@ class HomeController extends BaseController {
 
         if ($validator->fails()) {
             Session::flash('flashMessage', 'Post comment failed!');
-            return Redirect::action()
+            return Redirect::action('HomeController@getComment')
                             ->withErrors($validator)
                             ->withInput(Input::all());
         } else {
@@ -208,9 +208,39 @@ class HomeController extends BaseController {
         return Redirect::action('HomeController@getManageComment');
     }
 
-    public function putManageComment() {
-        $update_id = Input::get('updateId');
-        
-        $comment = Comment::find($update_id);
+    public function getUpdateComment($id) {
+        $contents = Content::all();
+        $comment = Comment::find($id);
+
+        return View::make('update_comment')->with([
+                    'comment' => $comment,
+                    'contents' => $contents
+        ]);
     }
+
+    public function putUpdateComment($id) {
+        $rules = array(
+            'comment' => 'required|max:500'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            Session::flash('flashMessage', 'Update comment failed!');
+            return Redirect::action('HomeController@getUpdateComment', ['id' => $id])
+                            ->withErrors($validator)
+                            ->withInput(Input::all());
+        } else {
+            $comment = Comment::find($id);
+            if (Input::get('isEditContent') == 'yes') {
+                $content = Content::find(Input::get('content'));
+                $comment->content_id = $content->id;
+                $comment->content_title = $content->title;
+            }
+            $comment->comment = Input::get('comment');
+            $comment->save();
+
+            Session::flash('flashMessage', 'Update comments successfully!');
+            return Redirect::action('HomeController@getManageComment');
+        }
+    }
+
 }

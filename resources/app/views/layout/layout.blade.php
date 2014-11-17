@@ -76,20 +76,16 @@
                                 <li>
                                     <a href="{{ URL::action('HomeController@getShowComment') }}">Show Comments</a>
                                 </li>
+                                @if(Auth::check())
                                 <li>
-                                    @if(!Auth::check())
-                                    <a href="#" onclick="alert('You must sign in first to post comments.')">Post Comments</a>
-                                    @else
+                                    <!--<a href="#" onclick="alert('You must sign in to post comments.')">Post Comments</a>-->
                                     <a href="{{ URL::action('HomeController@getComment') }}">Post Comments</a>
-                                    @endif
                                 </li>
                                 <li>
-                                    @if(!Auth::check())
-                                    <a href="#" onclick="alert('You must sign in first to post comments.')">Manage Your Comments</a>
-                                    @else
+                                    <!--<a href="#" onclick="alert('You must sign in to manage your comments.')">Manage Your Comments</a>-->
                                     <a href="{{ URL::action('HomeController@getManageComment') }}">Manage Your Comments</a>
-                                    @endif
                                 </li>
+                                @endif
                             </ul>
                         </li>
                         <li data-menu='research'>
@@ -290,12 +286,12 @@
         {{ HTML::script('assets/js/scrolltopcontrol.js') }}
         {{ HTML::script('assets/js/custom.js') }}
         <script type="text/javascript">
-                                        $(document).ready(function () {
-                                @if (Session::has('flashMessage'))
-                                        alert("{{ Session::get('flashMessage') }}");
-                                        window.location.hash = "#content";
-                                        @endif
-                                });
+        $(document).ready(function () {
+@if (Session::has('flashMessage'))
+        alert("{{ Session::get('flashMessage') }}");
+        window.location.hash = "#content";
+        @endif
+});
         </script>
         @yield('custom-script')
     </body>
