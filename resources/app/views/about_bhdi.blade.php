@@ -23,9 +23,6 @@
             </h2>
         </div>
         <div class="col-sm-12 paragraph">
-            <h3 class="headline">
-                <span>BHDI Website</span>
-            </h3>
             <p>
                 <span class='drop-cap'>T</span>his website is open forum to share thoughts and ideas for BDHI so every one's voice can be heard.
             </p>

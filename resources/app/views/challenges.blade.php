@@ -23,9 +23,6 @@
             </h2>
         </div>
         <div class="col-sm-12 paragraph">
-            <h3 class="headline">
-                <span>BHDI Website</span>
-            </h3>
             <p><span class="drop-cap">H</span>ealth care is very expensive today.</p>
             <p>Re-hospitalization is great expense for end patients.</p>
             <p>Failures of Medicine trials</p>

@@ -16,6 +16,7 @@ class CommentTable extends Migration {
             
             $table->integer('user_id');
             $table->integer('content_id');
+            $table->text('content_title');
             $table->text('comment');
             
             $table->timestamps();

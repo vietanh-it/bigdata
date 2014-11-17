@@ -23,9 +23,6 @@
             </h2>
         </div>
         <div class="col-sm-12 paragraph">
-            <h3 class="headline">
-                <span>BHDI Website</span>
-            </h3>
             <p>
                 1. Researching/studying DNA to understand one's genetic pattern to develop certain diseases.
             </p>

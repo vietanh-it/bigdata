@@ -14,7 +14,6 @@
 @stop
 
 @section('content')
-
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
@@ -29,9 +28,6 @@
             </h2>
         </div>
         <div class="col-sm-12 paragraph">
-            <h3 class="headline">
-                <span>BHDI Website</span>
-            </h3>
             <p>
                 <span class="drop-cap">B</span>ecause, FB and Twitter are Ads driven. It is easier to get lost in such sites and lose focus. BDHIis free and Zero distractful. FB and Twitter are general purpose social networking. BDHI is highly focused on Big Data Discussion in relation with Health industry.
             </p>

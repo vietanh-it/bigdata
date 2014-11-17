@@ -23,9 +23,6 @@
             </h2>
         </div>
         <div class="col-sm-12 paragraph">
-            <h3 class="headline">
-                <span>BHDI Website</span>
-            </h3>
             <p>
                 There are lot of opportunities and room in world of Big Data with respect to healthcare industry. We outline few of them below to give our visitors some ideas.
             </p>

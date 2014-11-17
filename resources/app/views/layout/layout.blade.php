@@ -70,8 +70,20 @@
                         <li data-menu='donate'>
                             <a href="{{ URL::action('HomeController@getDonate') }}#content">Donate</a>
                         </li>
-                        <li data-menu='comment'>
-                            <a href="#">Post Comments</a>
+                        <li data-menu='comment' class="dropdown">
+                            <a href="#" data-toggle="dropdown">Comments <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ URL::action('HomeController@getShowComment') }}">Show Comments</a>
+                                </li>
+                                <li>
+                                    @if(!Auth::check())
+                                    <a href="#" onclick="alert('You must sign in first to post comments.')">Post Comments</a>
+                                    @else
+                                    <a href="{{ URL::action('HomeController@getComment') }}">Post Comments</a>
+                                    @endif
+                                </li>
+                            </ul>
                         </li>
                         <li data-menu='research'>
                             <a href="{{ URL::action('HomeController@getResearch') }}#content">Research</a>
@@ -79,7 +91,7 @@
                         <li data-menu='contact'>
                             <a href="{{ URL::action('HomeController@getContactUs') }}#content">Contact us</a>
                         </li>
-                        
+
                         <li data-menu='account' class="dropdown">
                             @if(!Auth::check())
                             <a href="#" data-toggle="dropdown">Account <b class="caret"></b></a>
@@ -113,18 +125,7 @@
             <div class="b-team-photo">
             </div>
 
-            <!-- About Us -->
-            <div id="content" class="b-about-block">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-8 col-md-offset-2">
-                            The purpose of this website is to show information about Big Data.
-                        </div>
-                    </div> <!-- / .row -->
-                </div> <!-- / .container -->
-            </div>
-
-            <div class="error-message">
+            <div id='content' class="error-message">
                 {{ HTML::ul($errors->all()) }}
             </div>
             @yield('content')
@@ -140,8 +141,8 @@
                         <h4><i class="fa fa-map-marker text-theme-primary"></i> Contact Us</h4>
                         <p>Do not hesitate to contact us if you have any questions or feature requests:</p>
                         <p>
-                            Phone: (+84)966 948879<br />
-                            Email: <a href="mailto:vietanh.sgu@gmail.com">vietanh.sgu@gmail.com</a>
+                            Phone: 858-205-9437<br />
+                            Email: <a href="mailto:moalgham@my.bridgeport.edu">Mostafa Al Ghamdi</a>
                         </p>
                     </div>
                     <!-- Newsletter -->
@@ -175,18 +176,25 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="copyright">
-                        Copyright 2014 &COPY; - <a target="_blank" href="http://techstorm-solution.com">TechStorm Solution</a> | All Rights Reserved
+                        Copyright 2014 &COPY; - <a target="_blank" href="mailto:moalgham@my.bridgeport.edu">Mostafa Al Ghamdi</a> | All Rights Reserved
                     </div>
                 </div>
             </div>  <!-- / .row -->
         </div> <!-- / .container -->
+
+        <?php
+        $currentUrl = Route::currentRouteAction();
+        if ($currentUrl === '' || $currentUrl === NULL) {
+            $currentUrl = 'HomeController@getIndex';
+        }
+        ?>
 
         <!-- Modal Login -->
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     {{ Form::open(array('url' => 'home/sign-in')) }}
-                    {{ Form::hidden('currentUrl', Route::currentRouteAction()) }}
+                    <input type='hidden' name="currentUrl" value="{{ $currentUrl }}" />
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h4 class="modal-title" id="loginLabel">Sign in</h4>
@@ -215,7 +223,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     {{ Form::open(array('url' => 'home/sign-up')) }}
-                    {{ Form::hidden('currentUrl', Route::currentRouteAction()) }}
+                    <input type='hidden' name="currentUrl" value="{{ $currentUrl }}" />
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h4 class="modal-title" id="signupLabel">Sign up</h4>
@@ -275,12 +283,12 @@
         {{ HTML::script('assets/js/scrolltopcontrol.js') }}
         {{ HTML::script('assets/js/custom.js') }}
         <script type="text/javascript">
-        $(document).ready(function () {
-@if (Session::has('flashMessage'))
-        alert("{{ Session::get('flashMessage') }}");
-        window.location.hash = "#content";
-        @endif
-});
+                                        $(document).ready(function () {
+                                @if (Session::has('flashMessage'))
+                                        alert("{{ Session::get('flashMessage') }}");
+                                        window.location.hash = "#content";
+                                        @endif
+                                });
         </script>
         @yield('custom-script')
     </body>

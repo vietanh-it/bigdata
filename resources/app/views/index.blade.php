@@ -14,56 +14,31 @@
 @stop
 
 @section('content')
-
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
             <h2 class="headline-lg">
-                About Us
+                About BHDI
             </h2>
         </div>
-        <div class="col-sm-6">
-            <h3 class="headline">
-                <span>Welcome to Big Data website</span>
-            </h3>
+        <div class="col-sm-12 paragraph">
             <p>
-                Morbi rhoncus eu tellus sit amet porta. Suspendisse augue nunc, pharetra auctor pretium quis, semper id justo. Praesent egestas blandit vehicula. Phasellus eget purus mi.
+                <span class='drop-cap'>T</span>his website is open forum to share thoughts and ideas for BDHI so every one's voice can be heard.
             </p>
-            <ul class="ft-list">
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li>Donec vel nisi sit amet mauris dapibus aliquam quis vel magna.</li>
-                <li>Donec vulputate tellus quis volutpat congue.</li>
-                <li>Sed ultrices eros eu euismod semper.</li>
-                <li>Donec vulputate tellus quis volutpat congue.</li>
-            </ul>
-        </div>
-        <div class="col-sm-6">
-            <h3 class="headline">
-                <span>Our Skills</span>
-            </h3>
-            <div class="progress">
-                <div class="progress-bar progress-bar-theme-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;">
-                    HTML/CSS
-                </div>
-            </div>
-            <div class="progress">
-                <div class="progress-bar progress-bar-theme-primary" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
-                    JavaScript
-                </div>
-            </div>
-            <div class="progress">
-                <div class="progress-bar progress-bar-theme-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                    PHP
-                </div>
-            </div>
-            <div class="progress">
-                <div class="progress-bar progress-bar-theme-primary" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-                    Photoshop
-                </div>
-            </div>
+            <p>
+                <span class='drop-cap'>W</span>e are Graduates students and are working in Big Data Health research. 
+            </p>
+            <p>
+                <span class='drop-cap'>W</span>e believe, Big Data has raw ingredients to invent future invincibile machines.
+            </p>
+            <p>
+                <span class='drop-cap'>W</span>e believe, Big Data has lot of information. However, to be able use such information, we need to do research to extract value out of it. In other words, We need to seperate Signal from Noise.
+            </p>
+            <p>
+                <span class='drop-cap'>T</span>his website will help every one to share their ideas and add their drop of water to contribute to this ocean.
+            </p>
         </div>
     </div> <!-- / .row -->
 
 </div> <!-- / .container -->
-
 @stop

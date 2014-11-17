@@ -23,9 +23,6 @@
             </h2>
         </div>
         <div class="col-sm-12 paragraph">
-            <h3 class="headline">
-                <span>BHDI Website</span>
-            </h3>
             <p>
                 <span class="drop-cap">B</span>ig Data refers to data stream that is beyond the capability/processing power of current/traditional database systems.
             </p>

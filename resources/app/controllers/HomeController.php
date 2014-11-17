@@ -111,10 +111,15 @@ class HomeController extends BaseController {
             'passwordSignin' => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
+        
+        $currentUrl = Input::get('currentUrl');
+        if(empty($currentUrl)) {
+            $currentUrl = 'HomeController@getIndex';
+        }
 
         if ($validator->fails()) {
             Session::flash('flashMessage', 'Sign in failed! please check message below for errors');
-            return Redirect::action(Input::get('currentUrl'))
+            return Redirect::action()
                             ->withErrors($validator)
                             ->withInput(Input::except('passwordSignin'));
         } else {
@@ -137,5 +142,50 @@ class HomeController extends BaseController {
         Auth::logout();
         return Redirect::action('HomeController@getIndex');
     }
-
+    
+    public function getComment() {
+        $contents = Content::all();
+        
+        return View::make('comment')->with('contents', $contents);
+    }
+    
+    public function postComment() {
+        $rules = array(
+            'comment' => 'required|max:500'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        
+        if($validator->fails()) {
+            Session::flash('flashMessage', 'Post comment failed!');
+            return Redirect::action()
+                            ->withErrors($validator)
+                            ->withInput(Input::all());
+        } else {
+            $user = User::find(Auth::id());
+            $content = Content::find(Input::get('content'));
+            $comment = new Comment();
+            $comment->user_id = $user->id;
+            $comment->user_name = $user->name;
+            $comment->content_id = $content->id;
+            $comment->content_title = $content->title;
+            $comment->comment = Input::get('comment');
+            $comment->save();
+            
+            Session::flash('flashMessage', 'Post comments successfully!');
+            return Redirect::action('HomeController@getComment');
+        }
+    }
+    
+    public function getShowComment() {
+        $contents = Content::all();
+        
+        if(!empty(Request::get('c'))) {
+            $content_id = Input::get('c');
+            $comments = Comment::where('content_id', '=', $content_id)->paginate(5);
+            
+            return View::make('show_comments')->with(['comments' => $comments, 'contents' => $contents]);
+        } else {
+            return View::make('show_comments')->with(['contents' => $contents]);
+        }
+    }
 }
