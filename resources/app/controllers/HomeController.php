@@ -111,9 +111,9 @@ class HomeController extends BaseController {
             'passwordSignin' => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
-        
+
         $currentUrl = Input::get('currentUrl');
-        if(empty($currentUrl)) {
+        if (empty($currentUrl)) {
             $currentUrl = 'HomeController@getIndex';
         }
 
@@ -142,20 +142,20 @@ class HomeController extends BaseController {
         Auth::logout();
         return Redirect::action('HomeController@getIndex');
     }
-    
+
     public function getComment() {
         $contents = Content::all();
-        
+
         return View::make('comment')->with('contents', $contents);
     }
-    
+
     public function postComment() {
         $rules = array(
             'comment' => 'required|max:500'
         );
         $validator = Validator::make(Input::all(), $rules);
-        
-        if($validator->fails()) {
+
+        if ($validator->fails()) {
             Session::flash('flashMessage', 'Post comment failed!');
             return Redirect::action()
                             ->withErrors($validator)
@@ -170,22 +170,47 @@ class HomeController extends BaseController {
             $comment->content_title = $content->title;
             $comment->comment = Input::get('comment');
             $comment->save();
-            
+
             Session::flash('flashMessage', 'Post comments successfully!');
             return Redirect::action('HomeController@getComment');
         }
     }
-    
+
     public function getShowComment() {
         $contents = Content::all();
-        
-        if(!empty(Request::get('c'))) {
+
+        if (!empty(Request::get('c'))) {
             $content_id = Input::get('c');
             $comments = Comment::where('content_id', '=', $content_id)->paginate(5);
-            
+
             return View::make('show_comments')->with(['comments' => $comments, 'contents' => $contents]);
         } else {
             return View::make('show_comments')->with(['contents' => $contents]);
         }
+    }
+
+    public function getManageComment() {
+        $comments = Comment::findBy('user_id', Auth::id());
+
+        return View::make('manage_comment')
+                        ->with([
+                            'comments' => $comments
+        ]);
+    }
+
+    public function deleteManageComment() {
+        $delete_id = Input::get('deleteId');
+
+        $comment = Comment::find($delete_id);
+        $comment->delete();
+
+        Session::flash('flashMessage', 'Deleted comment successfully!');
+        return Redirect::action('HomeController@getManageComment');
+    }
+
+    public function putManageComment() {
+        $update_id = Input::get('updateId');
+        
+        $comment = Comment::find($update_id);
     }
 }

@@ -8656,3 +8656,7 @@ footer .tweet > p > a {
 .comment:nth-child(even) {
     background: #ccc;
 }
+
+#comment-table th {
+    text-align: center;
+}

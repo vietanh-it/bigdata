@@ -83,6 +83,13 @@
                                     <a href="{{ URL::action('HomeController@getComment') }}">Post Comments</a>
                                     @endif
                                 </li>
+                                <li>
+                                    @if(!Auth::check())
+                                    <a href="#" onclick="alert('You must sign in first to post comments.')">Manage Your Comments</a>
+                                    @else
+                                    <a href="{{ URL::action('HomeController@getManageComment') }}">Manage Your Comments</a>
+                                    @endif
+                                </li>
                             </ul>
                         </li>
                         <li data-menu='research'>
